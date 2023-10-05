@@ -1,0 +1,32 @@
+<div class="container bg-light">
+    <h1 class="text-center">SOLICITUD DE PRODUCTOS</h1>
+    <div class="row">
+        <div class="col-5 text-center">
+            <div class="vstack gap-3">
+                <h2>CINTA DE OPCIONES</h2>
+                <h3>FILTROS</h3>
+                <div>
+                    <p>Descargar historial de solicitudes como</p>
+                    <button type="button" class="btn btn-secondary">PDF</button>
+                    <button type="button" class="btn btn-secondary">
+                        XLSX
+                    </button>
+                </div>
+                <div mat-dialog-actions>
+                    <p class="m-0">Ingresar nueva solicitud</p>
+                    <button type="button" class="btn btn-secondary">
+                        Solicitud
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-7">
+            <div class="vstack gap-3">
+                <h2 class="text-center">HISTORIAL DE SOLICITUDES</h2>
+                <div style="max-height: 500px; overflow-y: auto">
+                    <app-prod-supply-req-card></app-prod-supply-req-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
