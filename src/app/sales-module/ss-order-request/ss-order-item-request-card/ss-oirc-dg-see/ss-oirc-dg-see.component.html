@@ -1,0 +1,81 @@
+<button mat-icon-button mat-dialog-close style="float: right" tabindex="-1">
+    <mat-icon>close</mat-icon>
+</button>
+
+<div class="text-center fs-4 pb-2" style="margin-top: 50px; margin-bottom: 2px">
+    <span class="fw-bold text-decoration-underline">DETALLES DEL PEDIDO</span>
+</div>
+
+<div mat-dialog-content style="padding: 15px; color: black">
+    <div class="row m-0 fs-6">
+        <div class="text-center fs-5 mb-1">
+            <span class="fw-bold text-decoration-underline"
+                >LISTA DE PRODUCTOS</span
+            >
+        </div>
+        <table
+            class="table table-sm table-hover table-borderless p-0"
+            style="
+                display: block;
+                max-height: 200px;
+                height: fit-content;
+                overflow-y: auto;
+            "
+            cellspacing="0"
+        >
+            <thead>
+                <tr>
+                    <th class="p-0" style="position: sticky; top: 0; width: 70%">
+                        Producto
+                    </th>
+                    <th class="p-0" style="position: sticky; top: 0; width: 30%">
+                        Cantidad
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of data.ProductList">
+                    <td class="text-break p-0">{{ product.Name }}</td>
+                    <td class="text-break p-0">
+                        {{ product.Quantity + " " + product.Units }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
+
+    <div class="row m-0 fs-6">
+        <div class="text-center fs-5 mb-1">
+            <span class="fw-bold text-decoration-underline"
+                >INFORMACION DEL CLIENTE</span
+            >
+        </div>
+        <div class="text-break">
+            <strong>- Nombres y Apellidos: </strong> {{ "ssefwefewfffffffffs" }}
+        </div>
+        <div class="text-break">
+            <strong>- Contacto: </strong> {{ "925445632" }}
+        </div>
+        <div class="text-break">
+            <strong>- Fecha de entrega: </strong> {{ "11-88-5952" }}
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row m-0 fs-6">
+        <div class="text-center fs-5 mb-1">
+            <span class="fw-bold text-decoration-underline"
+                >INFORMACION DEL PEDIDO</span
+            >
+        </div>
+        <div class="text-break">
+            <strong>- Fecha de registro: </strong> {{ "ssefwefewfffffffffs" }}
+        </div>
+        <div class="text-break">
+            <strong>- Hora de registro: </strong> {{ "925445632" }}
+        </div>
+    </div>
+</div>

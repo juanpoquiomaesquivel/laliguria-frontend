@@ -1,0 +1,35 @@
+<button mat-icon-button mat-dialog-close style="float: right" tabindex="-1">
+    <mat-icon>close</mat-icon>
+</button>
+
+<div class="text-center fs-4 pb-2" style="margin-top: 50px; margin-bottom: 2px">
+    <span class="fw-bold text-decoration-underline">LISTA DE INSUMOS</span>
+</div>
+
+<div mat-dialog-content style="padding: 15px; color: black">
+    <table
+        class="table table-sm table-hover table-borderless fs-6"
+        style="
+            display: block;
+            max-height: 200px;
+            height: fit-content;
+            overflow-y: auto;
+        "
+        cellspacing="0"
+    >
+        <thead>
+            <tr>
+                <th style="position: sticky; top: 0; width: 70%">Insumo</th>
+                <th style="position: sticky; top: 0; width: 30%">Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let supply of data">
+                <td class="text-break">{{ supply.name }}</td>
+                <td class="text-break">
+                    {{ supply.requestedQuantity }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

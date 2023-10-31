@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { SalesService } from '../Services/sales.service';
+import { SalesRequest } from '../Models/SalesRequest.model';
 
 @Component({
   selector: 'app-sales-module',

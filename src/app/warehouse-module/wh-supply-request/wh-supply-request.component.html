@@ -1,0 +1,148 @@
+<div class="container bg-white border border-black rounded-3 p-2">
+    <div class="h2 mod-c-title text-center my-3">SOLICITUD DE INSUMOS</div>
+    <div class="row px-5">
+        <div
+            class="col-12 col-sm-12 col-md-4 col-lg-4 mb-3 mb-sm-3 mb-md-0 mb-lg-0 text-center"
+        >
+            <div class="h3">CINTA DE OPCIONES</div>
+            <button
+                type="button"
+                class="btn btn-primary"
+                (click)="sendMessage()"
+            >
+                Send Message
+            </button>
+            <div class="vstack gap-4 mt-3">
+                <div class="h4">FILTROS</div>
+
+                <div class="d-flex justify-content-center align-items-center">
+                    Ordenar Por
+                    <div class="form-check">
+                        <input
+                            name="ckbSort"
+                            type="radio"
+                            class="form-check-input ckbox"
+                            id="checkRadio2"
+                            [checked]="sortDirection === 'desc'"
+                            (change)="onSortDirectionRadioChange('desc')"
+                        />
+                        <label class="form-check-label ckbox" for="checkRadio2"
+                            >Mas recientes</label
+                        >
+                    </div>
+                    <div class="form-check">
+                        <input
+                            name="ckbSort"
+                            type="radio"
+                            class="form-check-input ckbox"
+                            id="checkRadio1"
+                            [checked]="sortDirection === 'asc'"
+                            (change)="onSortDirectionRadioChange('asc')"
+                        />
+                        <label class="form-check-label ckbox" for="checkRadio1"
+                            >Mas antiguos</label
+                        >
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center align-items-center">
+                    Mostrar de
+                    <div
+                        class="form-check"
+                        *ngFor="let area of areas; let i = index"
+                    >
+                        <input
+                            type="checkbox"
+                            class="form-check-input ckbox"
+                            [id]="'ckbArea' + i"
+                            [(ngModel)]="area.checked"
+                            (change)="onAreaCheckboxChange()"
+                        />
+                        <label
+                            class="form-check-label ckbox"
+                            [for]="'ckbArea' + i"
+                            >{{ area.label | uppercase }}</label
+                        >
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="form-check">
+                        <input
+                            type="checkbox"
+                            class="form-check-input ckbox"
+                            id="flexCheckDefault"
+                            [(ngModel)]="onlyAwaiting"
+                            (change)="onOnlyAwaitingCheckboxchange()"
+                        />
+                        <label
+                            class="form-check-label ckbox"
+                            for="flexCheckDefault"
+                            >Ver únicamente solicitudes sin atender</label
+                        >
+                    </div>
+                </div>
+
+                <div>
+                    <p>Exportar como</p>
+                    <div
+                        class="hstack gap-3 justify-content-center align-items-center"
+                    >
+                        <button type="button" class="btn btn-outline-danger">
+                            <img src="../../assets/img/pdf.png" alt="Image" />
+                            <span>PDF</span>
+                        </button>
+                        <button type="button" class="btn btn-outline-success">
+                            <img src="../../assets/img/xls.png" alt="Image" />
+                            <span>Excel</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+            <div class="h3 text-center">HISTORIAL DE SOLICITUDES</div>
+            <div class="bg-dark-subtle rounded-3 p-2">
+                <div style="max-height: 400px; overflow-y: auto">
+                    <div class="vstack gap-2">
+                        <div class="spinner" *ngIf="isLoading"></div>
+                        <div *ngIf="isEmpty && !isLoading">
+                            No se han registrado solicitudes.
+                        </div>
+                        <div
+                            *ngIf="
+                                !isEmpty &&
+                                    !isLoading &&
+                                    !onlyAwaiting &&
+                                    filteredSupplyRequestList.length === 0;
+                                else listbody
+                            "
+                        >
+                            No hay solicitudes registradas.
+                        </div>
+                        <div
+                            *ngIf="
+                                !isEmpty &&
+                                    !isLoading &&
+                                    onlyAwaiting &&
+                                    filteredSupplyRequestList.length === 0;
+                                else listbody
+                            "
+                        >
+                            No hay solicitudes pendientes.
+                        </div>
+                        <ng-template #listbody>
+                            <app-wh-supply-item-request-card
+                                *ngFor="
+                                    let request of filteredSupplyRequestList
+                                "
+                                [request]="request"
+                            ></app-wh-supply-item-request-card>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

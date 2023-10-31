@@ -1,0 +1,96 @@
+<button mat-icon-button mat-dialog-close style="float: right" tabindex="-1">
+    <mat-icon>close</mat-icon>
+</button>
+
+<div class="text-center fs-4 pb-2" style="margin-top: 50px; margin-bottom: 2px">
+    <span class="fw-bold text-decoration-underline"
+        >FORMULARIO DE REGISTRO</span
+    >
+</div>
+
+<div mat-dialog-content style="padding: 15px; color: black">
+    <div class="row m-0 fs-6">
+        <div class="text-center fs-5 mb-1">
+            <span class="fw-bold text-decoration-underline"
+                >INSUMOS DE ALMACEN</span
+            >
+        </div>
+        <div class="row m-0 mb-1">
+            <div class="col-9">
+                <div>INSUMO</div>
+                <select class="form-select form-select-sm" (change)="onSupplyOptionSelectChange($event)">
+                    <option
+                        *ngFor="let option of dgAdminSupplyOptionList"
+                        [value]="option.id"
+                        [title]="option.description"
+                    >
+                        {{ option.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="col-3">
+                <div>CANTIDAD</div>
+                <input
+                    class="form-control form-control-sm"
+                    type="number"
+                    name=""
+                    id=""
+                    min="1"
+                    [(ngModel)]="quantity"
+                />
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mb-1">
+            <button class="btn btn-sm btn-primary" (click)="onAddButtonClick()">Anadir</button>
+        </div>
+        <hr />
+        <h3 class="text-center">LISTA DE INSUMOS</h3>
+        <table
+            class="table table-sm table-hover table-borderless p-0"
+            style="
+                display: block;
+                max-height: 200px;
+                height: fit-content;
+                overflow-y: auto;
+            "
+            cellspacing="0"
+        >
+            <thead>
+                <tr>
+                    <th
+                        class="p-0"
+                        style="position: sticky; top: 0; width: 68%"
+                    >
+                        Insumo
+                    </th>
+                    <th
+                        class="p-0"
+                        style="position: sticky; top: 0; width: 28%"
+                    >
+                        Cantidad
+                    </th>
+                    <th
+                        class="p-0"
+                        style="position: sticky; top: 0; width: 4%"
+                    ></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let supply of dgAdminSupplyList">
+                        <td class="text-break p-0">{{ supply.name }}</td>
+                        <td class="text-break p-0">
+                            {{ supply.requestedQuantity }}
+                        </td>
+                        <td class="text-break p-0">
+                            <button type="button" (click)="onRemoveButtonClick(supply.id)">x</button>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div mat-dialog-actions align="center">
+    <button [mat-dialog-close]="dgAdminSupplyList">Registrar</button>
+    <button mat-dialog-close>Cancelar</button>
+</div>

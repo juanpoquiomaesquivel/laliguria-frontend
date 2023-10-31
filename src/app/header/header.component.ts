@@ -15,7 +15,7 @@ export class HeaderComponent {
 
   routes: any = [
     {link: 'home', name: 'Inicio'},
-    {link: 'storage', name: 'Almacén'},
+    {link: 'warehouse', name: 'Almacén'},
     {link: 'production', name: 'Producción'},
     {link: 'sales', name: 'Ventas'}
   ]

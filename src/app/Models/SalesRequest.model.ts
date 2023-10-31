@@ -1,12 +1,20 @@
 export class SalesRequest {
 
     Id: number;
+    RequestStatusId: number;
+    RequestStatusName: string;
+    RequestStatusDescription: string;
+    RequestStatusColor: string;
     Registration: Date;
-    ClientName: string;
+    Information: JSON;
 
-    constructor(Id: number, Registration: Date, ClientName: string) {
+    constructor(Id: number, RequestStatusId: number, RequestStatusName: string, RequestStatusDescription: string, RequestStatusColor: string, Registration: Date, Information: JSON) {
         this.Id = Id;
+        this.RequestStatusId = RequestStatusId;
+        this.RequestStatusName = RequestStatusName;
+        this.RequestStatusDescription = RequestStatusDescription;
+        this.RequestStatusColor = RequestStatusColor;
         this.Registration = Registration;
-        this.ClientName = ClientName;
+        this.Information = Information;
     }
 }

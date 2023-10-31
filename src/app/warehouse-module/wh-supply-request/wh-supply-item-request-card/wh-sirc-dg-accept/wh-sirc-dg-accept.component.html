@@ -1,0 +1,30 @@
+<button mat-icon-button mat-dialog-close style="float: right" tabindex="-1">
+    <mat-icon>close</mat-icon>
+</button>
+
+<div class="text-center fs-4 pb-2" style="margin-top: 50px; margin-bottom: 2px">
+    <span class="fw-bold">ACEPTAR SOLICITUD</span>
+</div>
+
+<div mat-dialog-content style="padding: 15px; color: black">
+    <div class="text-center fs-6 fw-bold">
+        ¿Está seguro que desea aceptar la solicitud?
+    </div>
+</div>
+
+<div class="row w-100 m-0">
+    <button
+        type="button"
+        class="btn btn-outline-dark border-0 rounded-0 col-6 m-0"
+        [mat-dialog-close]="true"
+    >
+        Sí
+    </button>
+    <button
+        type="button"
+        class="btn btn-outline-dark border-0 rounded-0 col-6 m-0"
+        mat-dialog-close
+    >
+        No
+    </button>
+</div>

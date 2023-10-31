@@ -1,0 +1,53 @@
+<div class="card rounded-3">
+    <div class="card-body" [ngStyle]="{backgroundColor: request.status.Id === 6 ? 'red' : 'white'}">
+        <div class="row gap-3 justify-content-around">
+            <div class="col-xs-5 col-sm-7 col-md-7 col-lg-7 d-flex">
+                <div class="vgstack gap-2">
+                    <div class="h5 card-title">
+                        <strong>SOLICITUD N° {{ request.id }}</strong>
+                    </div>
+                    <p>
+                        <strong>Hora de registro: </strong
+                        >{{ showTimeWithFormat(request.registration) }}
+                    </p>
+                    <div class="status-container">
+                        <span
+                            ><strong>Cliente: </strong
+                            >{{ request.customer }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 d-flex">
+                <div class="vstack gap-2 align-self-center">
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-outline-dark"
+                        (click)="openSeeMoreDialog()"
+                    >
+                        Ver más
+                    </button>
+                    <div class="hstack gap-2 d-flex">
+                        <button
+                            type="button"
+                            class="btn btn-sm btn-outline-dark"
+                            (click)="openUpdateRequestFormDialog(0)"
+                            *ngIf="request.status.Id === 3"
+                        >
+                            Modificar
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-sm btn-outline-dark"
+                            (click)="openCancelRequestDialog()"
+                            *ngIf="request.status.Id === 3"
+                        >
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

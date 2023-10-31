@@ -1,0 +1,148 @@
+<div class="container bg-white border border-black rounded-3 p-2">
+    <div class="h2 mod-c-title text-center my-3">SISTEMA EXPERTO DE VENTAS</div>
+    <div class="row px-5">
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div style="font-weight: bold; font-size: 15px">
+                Seleccionar archivo de proyeccion de ventas
+            </div>
+            <div class="mt-1 hstack gap-3">
+                <label
+                    for="selectProyFile"
+                    class="btn btn-outline-success d-flex justify-content-start align-items-center"
+                    ><img
+                        class="m-0"
+                        src="../../assets/img/xls.png"
+                        alt="Image"
+                        style="width: 20px"
+                    /><span
+                        class="align-text-bottom"
+                        style="font-size: 14px; margin-left: 4px"
+                        >Excel</span
+                    ></label
+                >
+                <input class="d-none" id="selectProyFile" type="file" />
+                <div
+                    class="text-truncate"
+                    style="
+                        font-style: italic;
+                        font-weight: lighter;
+                        font-size: 14px;
+                    "
+                >
+                    No file selected.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-2 col-lg-2">
+            <label for="">Desde</label>
+            <input type="date" class="form-control" />
+        </div>
+        <div class="col-sm-12 col-md-2 col-lg-2">
+            <label for="">Hasta</label>
+            <input type="date" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row px-5 mt-3">
+        <div class="col-sm-12 col-md-12 col-lg-4 text-center">
+            <div class="h3">CINTA DE OPCIONES</div>
+
+            <div class="row gx-3 align-items-center">
+                <div class="col-auto">
+                    <label
+                        for="inputKeyword"
+                        class="col-form-label"
+                        style="font-size: 14px"
+                        >Dias festivos:</label
+                    >
+                </div>
+                <div class="col-12 col-sm col-lg">
+                    <select multiple
+                        id="inputKeyword"
+                        type="text"
+                        class="form-select"
+                        aria-label="palabra clave"
+                        aria-describedby="basic-addon1"
+                        style="font-size: 14px"
+                    >
+                <option value="aa">aa</option>
+                <option value="aa">b</option>
+                <option value="aa">acc</option>
+                </select>
+                </div>
+            </div>
+
+            <div class="row gx-3 align-items-center">
+                <div class="col-auto">
+                    <label
+                        for="inputKeyword"
+                        class="col-form-label"
+                        style="font-size: 14px"
+                        >Producto</label
+                    >
+                </div>
+                <div class="col-12 col-sm col-lg">
+                    <select
+                        id="inputKeyword"
+                        type="text"
+                        class="form-select"
+                        aria-label="palabra clave"
+                        aria-describedby="basic-addon1"
+                        style="font-size: 14px"
+                    ></select>
+                </div>
+            </div>
+
+            <div
+                class="col-sm-12 col-md-12 col-lg-3 mt-2 mt-sm-2 mt-md-0 mt-lg-0"
+            >
+                <div style="font-weight: bold; font-size: 15px">
+                    Exportar catalogo:
+                </div>
+                <div class="mt-1 hstack gap-3">
+                    <button
+                        type="button"
+                        class="btn btn-outline-success d-flex justify-content-center align-items-center"
+                    >
+                        <img
+                            class="m-0"
+                            src="../../assets/img/xls.png"
+                            alt="Image"
+                        />
+                        <span
+                            class="align-text-bottom"
+                            style="font-size: 14px; margin-left: 4px"
+                            >Excel</span
+                        >
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-outline-danger d-flex justify-content-center align-items-center"
+                    >
+                        <img
+                            class="m-0"
+                            src="../../assets/img/pdf.png"
+                            alt="Image"
+                        />
+                        <span
+                            class="align-text-bottom"
+                            style="font-size: 14px; margin-left: 4px"
+                            >PDF</span
+                        >
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-8">
+            <div class="h3 text-center">PROYECCION DE VENTAS</div>
+
+            <div class="bg-dark-subtle rounded-3 p-2">
+                <div style="max-height: 400px; overflow-y: auto">
+                    <div class="vstack gap-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

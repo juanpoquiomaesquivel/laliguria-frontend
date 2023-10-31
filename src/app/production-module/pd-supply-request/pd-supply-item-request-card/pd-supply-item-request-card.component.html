@@ -1,0 +1,58 @@
+<div class="card rounded-3">
+    <div class="card-body">
+        <div class="row justify-content-around">
+            <div class="col-xs-5 col-sm-7 col-md-7 col-lg-7 d-flex">
+                <div class="vgstack gap-2 align-self-center">
+                    <div class="h5 card-title">
+                        <strong>SOLICITUD N° {{ request.index }}</strong>
+                    </div>
+                    <p>
+                        <strong>Hora de registro: </strong
+                        >{{ request.registration | date: 'HH' }}
+                    </p>
+                    <div class="status-container">
+                        <div
+                            class="circle"
+                            [ngStyle]="{
+                                'background-color':
+                                    '#' + getRequestStatusColorHex()
+                            }"
+                        ></div>
+                        <span
+                            ><strong>Estado: </strong
+                            >{{ getRequestStatusName() }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-7 col-sm-5 col-md-5 col-lg-5 d-flex mt-3 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-0">
+                <div class="vstack gap-2 align-self-center">
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-outline-dark"
+                        (click)="openSeeMoreDialog()"
+                    >
+                        Ver más
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-outline-dark"
+                        (click)="openModifyRequestFormDialog()"
+                        *ngIf="getRequestStatusId() === 2"
+                    >
+                        Modificar
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-outline-dark"
+                        (click)="openCancelRequestDialog()"
+                        *ngIf="getRequestStatusId() === 2"
+                    >
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

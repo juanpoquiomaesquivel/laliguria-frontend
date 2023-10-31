@@ -1,0 +1,203 @@
+<button mat-icon-button mat-dialog-close style="float: right" tabindex="-1">
+    <mat-icon>close</mat-icon>
+</button>
+
+<div class="text-center h5 px-2" style="margin-top: 50px; margin-bottom: 2px">
+    <span style="text-decoration: underline; font-weight: bold"
+        >ADMINISTRACION DE PRODUCCION DIARIA</span
+    >
+</div>
+
+<div mat-dialog-content style="padding: 15px; color: black">
+    <p
+        class="text-center"
+        style="text-decoration: underline; font-weight: bold"
+    >
+        CATALOGO DE PRODUCCIÓN
+    </p>
+
+    <div class="row m-0">
+        <div class="col-5 col-sm-5 col-md-5 my-1 p-0">
+            <div style="font-weight: bold; font-size: 14px">
+                Importar catalogo:
+            </div>
+            <button
+                type="button"
+                class="btn btn-sm btn-outline-success d-flex justify-content-center align-items-center mt-1"
+            >
+                <img class="m-0" src="../../assets/img/xls.png" alt="Image" />
+                <span class="align-text-bottom" style="margin-left: 4px"
+                    >Excel</span
+                >
+            </button>
+        </div>
+
+        <div class="col-7 col-sm-7 col-md-7 my-1">
+            <div style="font-weight: bold; font-size: 14px">
+                Exportar catalogo:
+            </div>
+            <div class="row justify-content-start mt-1">
+                <div class="col-12 col-sm-6 col-md-6">
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-outline-success d-flex justify-content-center align-items-center"
+                    >
+                        <img
+                            class="m-0"
+                            src="../../assets/img/xls.png"
+                            alt="Image"
+                        />
+                        <span class="align-text-bottom" style="margin-left: 4px"
+                            >Excel</span
+                        >
+                    </button>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6">
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-outline-danger d-flex justify-content-center align-items-center"
+                    >
+                        <img
+                            class="m-0"
+                            src="../../assets/img/pdf.png"
+                            alt="Image"
+                        />
+                        <span class="align-text-bottom" style="margin-left: 4px"
+                            >PDF</span
+                        >
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row gx-3 align-items-center my-2">
+        <div class="col-auto">
+            <label
+                for="inputKeyword"
+                class="col-form-label"
+                style="font-size: 14px; font-weight: bold"
+                >Categoria:</label
+            >
+        </div>
+        <div class="col-12 col-sm col-lg">
+            <select
+                id="staticCategory"
+                class="form-select form-select-sm d-inline"
+                (change)="onCategorySelectChange($event)"
+            >
+                <option value="0">Todos</option>
+                <option
+                    [value]="category.id"
+                    *ngFor="let category of dgAdminCategoryList"
+                    [title]="category.description"
+                >
+                    {{ category.name }}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div
+                class="carousel-item"
+                *ngFor="let item of filteredDgAdminDailyRequestDataList; let i = index"
+                [ngClass]="{ active: i == 0 }"
+            >
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <div style="font-size: 16px; font-weight: bold">
+                                    PRODUCCION N° {{ item.index }}
+                                </div>
+                                <div
+                                    class="text-truncate"
+                                    style="font-size: 14px"
+                                >
+                                    <strong>Producto: </strong>
+                                    {{ item.productName }}
+                                </div>
+                                <div
+                                    class="text-truncate"
+                                    style="font-size: 14px"
+                                >
+                                    <strong>Cantidad:</strong>
+                                    {{ item.productionInfo }}
+                                </div>
+                            </div>
+                            <div
+                                class="col-3 d-flex justify-content-center align-items-center"
+                            >
+                                <img
+                                    src="../../assets/img/product.png"
+                                    style="width: 60px"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 text-center mb-2">
+        <a
+            class="link-secondary"
+            role="button"
+            data-bs-target="#carouselExample"
+            data-bs-slide="prev"
+            style="margin-right: 5px"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-left-square-fill"
+                viewBox="0 0 16 16"
+            >
+                <path
+                    d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"
+                />
+            </svg>
+        </a>
+        <a
+            class="link-secondary"
+            role="button"
+            data-bs-target="#carouselExample"
+            data-bs-slide="next"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-right-square-fill"
+                viewBox="0 0 16 16"
+            >
+                <path
+                    d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"
+                />
+            </svg>
+        </a>
+    </div>
+
+    <div class="modal-footer justify-content-center gap-2">
+        <button
+            [mat-dialog-close]="true"
+            type="button"
+            class="btn btn-sm btn-outline-dark"
+        >
+            Guardar
+        </button>
+        <button
+            mat-dialog-close
+            type="button"
+            class="btn btn-sm btn-outline-dark"
+        >
+            Cancelar
+        </button>
+    </div>
+</div>

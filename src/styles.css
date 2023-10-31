@@ -1,4 +1,107 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Gabarito&display=swap");
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+* {
+    font-family: "Gabarito", Roboto, "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(236, 185, 185);
+}
+
+/* styles for a single module and its nested components */
+
+.mod-c-title {
+    font-weight: bolder;
+}
+
+.nav-mod-item {
+    color: black;
+    background-color: rgb(172, 172, 172);
+    border-color: black;
+    border-width: 1px 1px 0px 1px;
+    border-style: solid;
+    border-radius: 0px 13px 0px 0px;
+}
+
+.nav-mod-item:hover:not(.nav-mod-item-active) {
+    color: black;
+    background-color: rgb(207, 207, 207);
+}
+
+.nav-mod-item:focus {
+    background-color: rgb(192, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.nav-mod-item-active {
+    background-color: white;
+    font-weight: bold;
+}
+
+/* styles in general for components */
+
+.ckbox:hover {
+    cursor: pointer;
+}
+
+button img {
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* For all status of requests or orders */
+
+.status-container {
+    display: flex;
+    align-items: center;
+}
+
+.circle {
+    float: left;
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    transform: translate(0%, 0%);
+}
+
+.circle:before,
+.circle:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px solid #00000056;
+    border-radius: 50%;
+}
+
+.circle:before {
+    animation: ripple 2s linear infinite;
+}
+
+.circle:after {
+    animation: ripple 2s linear 1s infinite;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}

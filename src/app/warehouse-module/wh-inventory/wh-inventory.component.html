@@ -1,0 +1,180 @@
+<div class="container bg-white border border-black rounded-3 p-2">
+    <div class="h2 mod-c-title text-center my-3">INVENTARIO DE ALMACEN</div>
+    <div class="row px-5">
+        <div class="col-sm-12 col-md-12 col-lg-9">
+            <div class="row gx-3 align-items-center">
+                <div class="col-auto">
+                    <label
+                        for="inputKeyword"
+                        class="col-form-label"
+                        style="font-size: 14px"
+                        >Ingrese termino de busqueda:</label
+                    >
+                </div>
+                <div class="col-12 col-sm col-lg">
+                    <input
+                        id="inputKeyword"
+                        type="text"
+                        class="form-control"
+                        placeholder="Ejemplo: Harina"
+                        aria-label="palabra clave"
+                        aria-describedby="basic-addon1"
+                        style="font-size: 14px"
+                        [(ngModel)]="keyword"
+                        (input)="onKeywordInputChange()"
+                    />
+                </div>
+            </div>
+
+            <div class="my-2" style="font-size: 13px">
+                <strong>Nota:</strong> El termino de busqueda puede ser el
+                codigo, nombre o categoria del insumo.
+            </div>
+
+            <div class="d-flex align-items-center">
+                <div class="form-check">
+                    <input
+                        type="checkbox"
+                        class="form-check-input ckbox"
+                        id="flexCheckDefault"
+                        [(ngModel)]="seeConsolidated"
+                        (change)="onCheckboxChange()"
+                    />
+                    <label
+                        class="form-check-label ckbox"
+                        for="flexCheckDefault"
+                        style="font-size: 14px"
+                        >Ver consolidado (agrupar los productos)</label
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-3 mt-2 mt-sm-2 mt-md-0 mt-lg-0">
+            <div style="font-weight: bold; font-size: 14px">
+                Exportar catalogo:
+            </div>
+            <div class="mt-1 hstack gap-3">
+                <button
+                    type="button"
+                    class="btn btn-outline-success d-flex justify-content-center align-items-center"
+                >
+                    <img
+                        class="m-0"
+                        src="../../assets/img/xls.png"
+                        alt="Image"
+                    />
+                    <span class="align-text-bottom" style="margin-left: 4px"
+                        >Excel</span
+                    >
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-outline-danger d-flex justify-content-center align-items-center"
+                >
+                    <img
+                        class="m-0"
+                        src="../../assets/img/pdf.png"
+                        alt="Image"
+                    />
+                    <span class="align-text-bottom" style="margin-left: 4px"
+                        >PDF</span
+                    >
+                </button>
+            </div>
+        </div>
+
+        <div class="col-12 mt-3 mt-sm-3 mt-md-3 mt-lg-3">
+            <div class="table-responsive">
+                <table
+                    class="table table-hover table-bordered"
+                    matSort
+                    (matSortChange)="onSortChange($event)"
+                >
+                    <thead class="table-secondary">
+                        <tr class="align-middle">
+                            <th
+                                class="text-wrap"
+                                [ngStyle]="{
+                                    'width.%': header.width,
+                                    'min-width.%': header.width
+                                }"
+                                *ngFor="let header of headers"
+                                mat-sort-header="{{ header.name }}"
+                                disabled="{{ header.disabled }}"
+                            >
+                                {{ header.label | uppercase }}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="
+                                let item of filteredSupplyItemDataList
+                                    | paginate
+                                        : {
+                                              itemsPerPage: pageSize,
+                                              currentPage: pageNumber
+                                          };
+                                let i = index
+                            "
+                        >
+                            <th scope="row" class="text-break">
+                                {{ (pageNumber - 1) * pageSize + i + 1 }}
+                            </th>
+                            <td class="text-break">
+                                {{ item.code }}
+                            </td>
+                            <td
+                                class="text-break"
+                                title="{{ item.description }}"
+                            >
+                                {{ item.name }}
+                            </td>
+                            <td class="text-break">
+                                {{ item.provider }}
+                            </td>
+                            <td class="text-break">
+                                {{ item.category }}
+                            </td>
+                            <td class="text-break">
+                                {{
+                                    item.registration != null
+                                        ? (item.registration
+                                          | date : "dd/MM/yy")
+                                        : ""
+                                }}
+                            </td>
+                            <td class="text-break">
+                                {{ item.quantity }}
+                            </td>
+                            <td class="text-break">
+                                {{ item.available }}
+                            </td>
+                        </tr>
+                        <tr *ngIf="isLoading">
+                            <td colspan="8">
+                                <div class="spinner"></div>
+                            </td>
+                        </tr>
+                        <tr *ngIf="isEmpty && !isLoading">
+                            <td colspan="8">
+                                <div>No hay información disponible.</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div
+                class="col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex flex-column align-items-center mt-4"
+            >
+                <pagination-controls
+                    (pageChange)="pageNumber = $event"
+                    previousLabel="Anterior"
+                    nextLabel="Siguiente"
+                ></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="container bg-white border border-black rounded-3 p-2">
+    <div class="h2 mod-c-title text-center my-3">
+        CATALOGO DE PRODUCCION DIARIA
+    </div>
+    <div class="row px-5">
+        <div
+            class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3 mb-sm-3 mb-md-0 mb-lg-0 text-center"
+        >
+            <div class="h3">CINTA DE OPCIONES</div>
+            <div class="vstack gap-4">
+                <div class="mt-3">
+                    <button
+                        type="button"
+                        class="btn btn-outline-primary"
+                        (click)="openAdminDialog()"
+                    >
+                        Administrar producción diaria
+                    </button>
+                </div>
+
+                <div class="hstack gap-3 justify-content-center">
+                    <strong>Exportar como:</strong>
+                    <button
+                        type="button"
+                        class="btn btn-outline-success d-flex justify-content-center align-items-center"
+                    >
+                        <img
+                            class="m-0"
+                            src="../../assets/img/xls.png"
+                            alt="Image"
+                        />
+                        <span
+                            class="align-text-bottom"
+                            style="font-size: 14px; margin-left: 4px"
+                            >Excel</span
+                        >
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-outline-danger d-flex justify-content-center align-items-center"
+                    >
+                        <img
+                            class="m-0"
+                            src="../../assets/img/pdf.png"
+                            alt="Image"
+                        />
+                        <span
+                            class="align-text-bottom"
+                            style="font-size: 14px; margin-left: 4px"
+                            >PDF</span
+                        >
+                    </button>
+                </div>
+
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="form-check">
+                        <input
+                            type="checkbox"
+                            class="form-check-input ckbox"
+                            value=""
+                            id="flexCheckDefault"
+                            [(ngModel)]="onlyAwaiting"
+                            (change)="onOnlyAwaitingCheckboxchange()"
+                        />
+                        <label
+                            class="form-check-label ckbox"
+                            for="flexCheckDefault"
+                            >Ver únicamente productos no elaborados</label
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="h3 text-center">PRODUCCION DIARIA</div>
+            <div class="bg-dark-subtle rounded-3 p-2">
+                <div style="max-height: 400px; overflow-y: auto">
+                    <div class="vstack gap-2">
+                        <app-pd-daily-item-request-card
+                            *ngFor="let request of filteredDailyRequestList"
+                            [request]="request"
+                        ></app-pd-daily-item-request-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

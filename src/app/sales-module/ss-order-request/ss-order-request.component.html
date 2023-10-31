@@ -1,0 +1,45 @@
+<div class="container bg-white border border-black rounded-3 p-2">
+    <div class="h2 mod-c-title text-center my-3">SOLICITUD DE PRODUCTOS</div>
+    <div class="row px-5">
+        <div class="col-sm-12 col-md-12 col-lg-5 text-center">
+            <div class="h3">CINTA DE OPCIONES</div>
+            <div class="h4">FILTROS</div>
+            <div class="vstack gap-4 mt-3">
+                <div>
+                    <p>Descargar historial de solicitudes como</p>
+                    <div
+                        class="hstack gap-3 justify-content-center align-items-center"
+                    >
+                        <button type="button" class="btn btn-outline-danger">
+                            <img src="../../assets/img/pdf.png" alt="Image" />
+                            <span>PDF</span>
+                        </button>
+                        <button type="button" class="btn btn-outline-success">
+                            <img src="../../assets/img/xls.png" alt="Image" />
+                            <span>Excel</span>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <p>Ingresar nueva solicitud</p>
+                    <button type="button" class="btn btn-outline-primary">
+                        <img src="../../assets/img/doc.png" alt="Image" />
+                        <span>Solicitud</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-sm-12 col-md-12 col-lg-7">
+            <div class="h3 text-center">HISTORIAL DE SOLICITUDES</div>
+
+            <div class="bg-dark-subtle rounded-3 p-2">
+                <div style="max-height: 400px; overflow-y: auto">
+                    <div class="vstack gap-2">
+                        <app-ss-order-item-request-card *ngFor="let req of filteredProductRequestList" [request]="req"></app-ss-order-item-request-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

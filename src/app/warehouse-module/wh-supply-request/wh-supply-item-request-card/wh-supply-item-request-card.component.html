@@ -1,0 +1,84 @@
+<div class="card rounded-3">
+    <div class="card-body">
+        <div class="row justify-content-around">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                <div class="vgstack gap-2 align-self-center">
+                    <div class="h5 card-title">
+                        <strong>SOLICITUD N° {{ request.index }}</strong>
+                    </div>
+
+                    <div class="status-container">
+                        <div
+                            class="circle"
+                            [ngStyle]="{
+                                'background-color':
+                                    '#' + getRequestStatusColorHex()
+                            }"
+                        ></div>
+                        <span
+                            ><strong>Estado: </strong
+                            >{{ getRequestStatusName() }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 d-flex">
+                <div class="vgstack gap-2 align-self-center">
+                    <div>Area {{ request.area }}</div>
+                    <div>
+                        Hora de solicitud
+                        {{ request.registration | date : "yyyy" }}
+                    </div>
+                    <div>Solicitante {{ request.requester }}</div>
+                </div>
+            </div>
+
+            <div
+                class="col-xs-6 col-sm-6 col-md-6 col-lg-3 d-flex mt-3 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-0 d-flex"
+            >
+                <div class="vstack gap-2 justify-content-center">
+                    <span>Insumos disponibles!</span>
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-outline-dark"
+                        (click)="openSeeMoreDialog()"
+                    >
+                        Ver más
+                    </button>
+                </div>
+            </div>
+
+            <div
+                class="col-xs-6 col-sm-6 col-md-6 col-lg-3 d-flex mt-3 mt-sm-0 mt-md-0 mt-lg-0 mt-xl-0 d-flex"
+            >
+                <div class="vstack gap-2 align-self-center h-100">
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-outline-dark"
+                        (click)="openAcceptSupplyRequestDialog()"
+                        *ngIf="getRequestStatusId() === 2"
+                    >
+                        Aceptar
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-outline-dark"
+                        (click)="openFinishSupplyRequestDialog()"
+                        *ngIf="getRequestStatusId() === 3"
+                    >
+                        Terminar
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-outline-dark"
+                        (click)="openDenySupplyRequestDialog()"
+                        *ngIf="getRequestStatusId() === 2"
+                    >
+                        Rechazar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<button mat-icon-button mat-dialog-close style="float: right" tabindex="-1">
+    <mat-icon>close</mat-icon>
+</button>
+
+<div class="text-center h5 px-2" style="margin-top: 50px; margin-bottom: 2px">
+    <span style="text-decoration: underline; font-weight: bold"
+        >LISTA DE INGREDIENTES</span
+    >
+</div>
+
+<div mat-dialog-content style="padding: 15px; color: black">
+    <table
+        class="table table-sm table-hover table-borderless fs-6 p-0"
+        style="
+            display: block;
+            max-height: 200px;
+            height: fit-content;
+            overflow-y: auto;
+        "
+        cellspacing="0"
+    >
+        <thead style="display: table; width: 100%; table-layout: fixed">
+            <tr>
+                <th class="p-0" style="position: sticky; top: 0; width: 70%">
+                    Ingrediente
+                </th>
+                <th class="p-0" style="position: sticky; top: 0; width: 30%">
+                    Cantidad
+                </th>
+            </tr>
+        </thead>
+        <tbody style="display: table; width: 100%; table-layout: fixed">
+            <tr *ngFor="let ingredient of data">
+                <td class="text-break p-0" style="width: 70%">
+                    {{ ingredient.name }}
+                </td>
+                <td class="text-break p-0" style="width: 30%">
+                    {{ ingredient.quantity + ' ' + ingredient.units }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
